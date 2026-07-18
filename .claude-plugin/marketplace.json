@@ -1,0 +1,13 @@
+{
+  "name": "precogly-tools",
+  "owner": {
+    "name": "Precogly"
+  },
+  "plugins": [
+    {
+      "name": "sync-notes",
+      "source": "./",
+      "description": "Turn a maintainer-sync transcript into GitHub records — Discussion notes, inline decisions, and from-sync issues."
+    }
+  ]
+}

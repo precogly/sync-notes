@@ -1,0 +1,11 @@
+{
+  "name": "sync-notes",
+  "description": "Turn a maintainer-sync transcript into GitHub records — Discussion notes, inline decisions, and from-sync issues.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Precogly"
+  },
+  "repository": "https://github.com/precogly/sync-notes",
+  "homepage": "https://github.com/precogly/sync-notes#readme",
+  "license": "Apache-2.0"
+}
