@@ -19,18 +19,35 @@ file is the handoff between them, and it is the human's to edit.
 ## The vault
 
 The vault lives at `$PRECOGLY_VAULT`, defaulting to `~/Desktop/vault`. Syncs are
-flat, date-keyed files under `Precogly/Syncs/`:
+date-keyed files under `Precogly/Syncs/`, either flat or one folder deep:
 
-    2026-07-13.md              the human's rough notes
-    2026-07-13-transcript.md   pasted out of Fathom
-    2026-07-13-fathom.md       optional — Fathom's own action items
-    2026-07-13-draft.md        yours to write, the human's to edit
+    Precogly/Syncs/
+      2026-07-11.md                 the human's rough notes
+      2026-07-11-transcript.md      pasted out of Fathom
+      2026-07-11-fathom.md          optional — Fathom's own action items
+      2026-07-11-draft.md           yours to write, the human's to edit
+      July 18/                      the human files by meeting when it suits them
+        2026-07-18.md
+        2026-07-18-transcript.md
+        2026-07-18-draft.md
 
-Resolve the sync date by listing `Precogly/Syncs/` and taking the newest date that
-has a `-transcript.md`. That qualifier matters: Daily Notes writes into this same
-folder, so a bare `YYYY-MM-DD.md` with no transcript beside it is just a note the
-human made on some other day, not a sync. If nothing has a transcript, say so and
-stop — they haven't pasted it in yet.
+Find the sync by globbing `Precogly/Syncs/*-transcript.md` **and**
+`Precogly/Syncs/*/*-transcript.md`, then taking the newest date. Write the draft
+beside the transcript it came from, in whichever directory that was.
+
+The date always comes from the **filename**, never the containing folder. Folder
+names are the human's filing habit and follow no convention — `July 18` is not a
+date this command can parse, and guessing at one would break the ISO date that
+joins the vault to the thread and the issues.
+
+The `-transcript.md` qualifier matters just as much: Daily Notes writes into this
+same tree, so a bare `YYYY-MM-DD.md` with no transcript beside it is a note the
+human made on some other day, not a sync. If nothing anywhere has a transcript,
+say so and stop — they haven't pasted it in yet.
+
+Do not reorganize the vault. If a sync's files are split across directories, or a
+date appears in two places, say what you found and stop rather than guessing which
+copy is real.
 
 ## Draft mode
 
